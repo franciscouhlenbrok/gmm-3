@@ -43,7 +43,7 @@ class CustomWindow:
         cv2.createTrackbar('noise_suppr', name, 0, 6, nothing)
 
     @staticmethod
-    def imshow(name, frame):
+    def imshow(name, frame, showThresholds):
         """Diese Methode ist genauso zu bedienen wie die gleichnamige Methode aus OpenCV (->cv2.imshow(...)): Der name des Fensters und das anzuzeigende frame können gesetzt werden. Hier wird die Funktion um die Anzeige der Bilder pro Sekunde erweitert.
         """
         # zeige zusätzlich die Anzahl der Bilder pro Sekunde im Livestream an
@@ -53,6 +53,23 @@ class CustomWindow:
                 1 / np.mean(np.diff(CustomWindow._TIMESTAMPS[-100:])), decimals=1)
             cv2.putText(frame, 'fps: '+str(fps), (0, 50),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+        if showThresholds:
+            cv2.putText(frame, 'th_ch1_low: '+'...', (0, 100),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+            cv2.putText(frame, 'th_ch1_up: '+'...', (0, 150),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+            cv2.putText(frame, 'th_ch2_low: '+'...', (0, 200),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+            cv2.putText(frame, 'th_ch2_up: '+'...', (0, 250),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+            cv2.putText(frame, 'th_ch3_low: '+'...', (0, 300),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+            cv2.putText(frame, 'th_ch3_up: '+'...', (0, 350),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+            cv2.putText(frame, 'noise_suppr: '+'...', (0, 400),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+
+
         cv2.imshow(name, frame)
 
     @staticmethod

@@ -14,8 +14,10 @@ Purpose: Für Praktikum Mikrorechentechnik 2 - Versuch GMM 3 - Bildaufnahme und 
 # Import benötigter python Pakete bzw. Module
 # -----------------------------------------------------------------------------
 import cv2  # OpenCV Paket für Python
+import numpy as np
 from thresholdfilter import apply_threshold
 from customWindow import CustomWindow as cw
+
 
 # wenn dieses Skript über den Pythoninterpreter im Terminal gestartet wird, dann wird der folgende Code ausgeführt
 if __name__ == '__main__':
@@ -23,6 +25,9 @@ if __name__ == '__main__':
     # Dem Konstruktor muss die ID (ein integer) der Kamera übergeben werden. Wenn nur eine Kamera am System angeschlossen ist, ist die ID <0>. Eventuell muss dieser Wert auf <1> gesetzt werden, sofern das System bspw. Front- und Rückkamera besitzt -> ausprobieren.
     # -------------------------------------------------------------------------
     cam_stream = cv2.VideoCapture(0)
+
+    
+
 
     # -------------------------------------------------------------------------
     # OPTIONAL (zum experimentieren): Parameter können gesetzt werden (mit welcher Auflösung soll die Kamera ausgelesen werden, mit wie vielen Bildern pro Sekunde, etc.); Die Parameter werden nicht zwingend von der verwendeten Kamera unterstützt und es kann sein, dass die Kamera nicht mehr korrekt ausgelesen werden kann!
@@ -34,7 +39,7 @@ if __name__ == '__main__':
     # -------------------------------------------------------------------------
     # Initialisiere ein Fenster, zur anzeige der Bilder; Das Fenster passt sich automatisch der Größe bzw. der Auflösung der Aufnahme an; Das Fenster wird später über den ersten Übergabeparameter <'Demo'> referenziert
     # -------------------------------------------------------------------------
-    cv2.namedWindow('Demo', cv2.WINDOW_AUTOSIZE)
+    cw.namedWindow('Aufgabe2', cv2.WINDOW_GUI_NORMAL)
 
     # -------------------------------------------------------------------------
     # Lese die Bilder der Kamera aus, bis die "ESC" Taste betätigt wird (Das Fenster muss hierbei angewählt (im Fokus) sein.)
@@ -45,16 +50,29 @@ if __name__ == '__main__':
         # ---------------------------------------------------------------------
         check, frame = cam_stream.read()
 
+
+        #cw.imshow('Unbearbeitet', img)
+
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
         # Verarbeitung des eingelesenen Bildes
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
+        
+        thresholds = cw._get_thresholds    
+    
+        cw.imshow('Aufgabe2',apply_threshold(frame, thresholds), True)
 
+        # Ausgabe der Tresholds auf dem Display
+        
+
+        
         # ---------------------------------------------------------------------
         # Anzeigen des manipulierten frames
         # ---------------------------------------------------------------------
-        cv2.imshow('Demo', frame)
+        #numpy_vertical = np.vstack((img, faceImg))
+        
+        #cw.imshow('Demo', faceImg)
 
         # ---------------------------------------------------------------------
         # Prüfen, ob eine Nutzereingabe getätigt wurde um das Programm zu beenden; 27 entspricht der Escape-Taste (siehe ASCII Tabelle: http://www.asciitable.com/)
