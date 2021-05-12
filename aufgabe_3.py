@@ -35,7 +35,16 @@ if __name__ == '__main__':
     # -------------------------------------------------------------------------
     # Initialisiere ein Fenster, zur anzeige der Bilder; Das Fenster passt sich automatisch der Größe bzw. der Auflösung der Aufnahme an; Das Fenster wird später über den ersten Übergabeparameter <'Demo'> referenziert
     # -------------------------------------------------------------------------
-    cv2.namedWindow('Demo', cv2.WINDOW_AUTOSIZE)
+    cw.namedWindow('Aufgabe3', cv2.WINDOW_GUI_NORMAL)
+    
+
+    # Initialisiere PPG-Extraktor
+
+    PPG = PPGExtractor (30,5,5)
+
+    
+
+    
 
     # -------------------------------------------------------------------------
     # Lese die Bilder der Kamera aus, bis die "ESC" Taste betätigt wird (Das Fenster muss hierbei angewählt (im Fokus) sein.)
@@ -51,12 +60,14 @@ if __name__ == '__main__':
         # Verarbeitung des eingelesenen Bildes
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
-
+        thresholds = cw._get_thresholds 
+        maniFrame = apply_threshold(frame, thresholds)
+        PPG.process_frame(  maniFrame)
         # ---------------------------------------------------------------------
         # Anzeigen des manipulierten frames
         # ---------------------------------------------------------------------
-        cv2.imshow('Demo', frame)
-
+        
+        cw.imshow('Aufgabe3', maniFrame, False)
         # ---------------------------------------------------------------------
         # Prüfen, ob eine Nutzereingabe getätigt wurde um das Programm zu beenden; 27 entspricht der Escape-Taste (siehe ASCII Tabelle: http://www.asciitable.com/)
         # ---------------------------------------------------------------------
