@@ -53,21 +53,19 @@ if __name__ == '__main__':
         img = cv2.resize(img, (0, 0), None, .5, .5)
 
 
-        ## In HSV convertieren
-        hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+        lower_range = np.array([255,0,255])
+        upper_range = np.array([255,255,255]) 
+        mask = cv2.inRange (img, lower_range, upper_range)
+        result = cv2.bitwise_and(img,img, mask = mask)
 
-        ## Grün maskieren
-        mask = cv2.inRange(hsv, (25, 25, 25), (86, 255,255))
 
-        ## slice the green
-        imask = mask>0
-        green = np.zeros_like(img, np.uint8)
-        green[imask] = img[imask]
+
+       
 
         ## save 
         #cv2.imwrite("green.png", green)
 
-        numpy_vertical = np.vstack((img, green))
+        numpy_vertical = np.vstack((img, result))
         # ---------------------------------------------------------------------
         # Anzeigen des manipulierten frames
         # ---------------------------------------------------------------------
