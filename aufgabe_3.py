@@ -62,12 +62,13 @@ if __name__ == '__main__':
         # ---------------------------------------------------------------------
         thresholds = cw._get_thresholds 
         maniFrame = apply_threshold(frame, thresholds)
-        PPG.process_frame(  maniFrame)
+        
         # ---------------------------------------------------------------------
         # Anzeigen des manipulierten frames
         # ---------------------------------------------------------------------
-        
         cw.imshow('Aufgabe3', maniFrame, False)
+        PPG.process_frame(  maniFrame)
+        
         # ---------------------------------------------------------------------
         # Prüfen, ob eine Nutzereingabe getätigt wurde um das Programm zu beenden; 27 entspricht der Escape-Taste (siehe ASCII Tabelle: http://www.asciitable.com/)
         # ---------------------------------------------------------------------
