@@ -74,7 +74,7 @@ if __name__ == '__main__':
         # ---------------------------------------------------------------------
         # Anzeigen des manipulierten frames
         # ---------------------------------------------------------------------
-        cv2.imshow('1 Heftiger Dude', numpy_vertical)
+        cv2.imshow('Oben Originalbild, Unten grüner Farbkanal', numpy_vertical)
         
         # ---------------------------------------------------------------------
         # Prüfen, ob eine Nutzereingabe getätigt wurde um das Programm zu beenden; 27 entspricht der Escape-Taste (siehe ASCII Tabelle: http://www.asciitable.com/)
