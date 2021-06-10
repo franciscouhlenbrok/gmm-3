@@ -54,19 +54,19 @@ class CustomWindow:
             cv2.putText(frame, 'fps: '+str(fps), (0, 50),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
         if showThresholds:
-            cv2.putText(frame, 'th_ch1_low: '+'...', (0, 100),
+            cv2.putText(frame, 'th_ch1_low: '+str(cv2.getTrackbarPos('th_ch1_low', name)), (0, 100),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-            cv2.putText(frame, 'th_ch1_up: '+'...', (0, 150),
+            cv2.putText(frame, 'th_ch1_up: '+str(cv2.getTrackbarPos('th_ch1_up', name)), (0, 150),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-            cv2.putText(frame, 'th_ch2_low: '+'...', (0, 200),
+            cv2.putText(frame, 'th_ch2_low: '+str(cv2.getTrackbarPos('th_ch2_low', name)), (0, 200),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-            cv2.putText(frame, 'th_ch2_up: '+'...', (0, 250),
+            cv2.putText(frame, 'th_ch2_up: '+str(cv2.getTrackbarPos('th_ch2_up', name)), (0, 250),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-            cv2.putText(frame, 'th_ch3_low: '+'...', (0, 300),
+            cv2.putText(frame, 'th_ch3_low: '+str(cv2.getTrackbarPos('th_ch3_low', name)), (0, 300),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-            cv2.putText(frame, 'th_ch3_up: '+'...', (0, 350),
+            cv2.putText(frame, 'th_ch3_up: '+str(cv2.getTrackbarPos('th_ch3_up', name)), (0, 350),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-            cv2.putText(frame, 'noise_suppr: '+'...', (0, 400),
+            cv2.putText(frame, 'noise_suppr: '+str(cv2.getTrackbarPos('noise_suppr', name)), (0, 400),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 
 

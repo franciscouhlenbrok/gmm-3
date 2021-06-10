@@ -53,7 +53,7 @@ if __name__ == '__main__':
         img = cv2.resize(img, (0, 0), None, .5, .5)
 
 
-        lower_range = np.array([255,0,255])
+        lower_range = np.array([0,0,0])
         upper_range = np.array([255,255,255]) 
         mask = cv2.inRange (img, lower_range, upper_range)
         result = cv2.bitwise_and(img,img, mask = mask)
