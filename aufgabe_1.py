@@ -14,7 +14,7 @@ Purpose: Für Praktikum Mikrorechentechnik 2 - Versuch GMM 3 - Bildaufnahme und 
 # Import benötigter python Pakete bzw. Module
 # -----------------------------------------------------------------------------
 import cv2  # OpenCV Paket für Python
-import numpy as np
+import numpy as np #Array-Handling
 
 # wenn dieses Skript über den Pythoninterpreter im Terminal gestartet wird, dann wird der folgende Code ausgeführt
 if __name__ == '__main__':
@@ -49,34 +49,34 @@ if __name__ == '__main__':
         # Verarbeitung des eingelesenen Bildes
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
-        img = frame
-        img = cv2.resize(img, (0, 0), None, .5, .5)
+        img = frame #Umbenennung frame -> img
+        img = cv2.resize(img, (0, 0), None, .5, .5) #img-Größe halbieren -> Auflösung wird verringert
 
 
         ## In HSV convertieren
         hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
         ## Grün maskieren
-        mask = cv2.inRange(hsv, (25, 25, 25), (86, 255,255))
+        mask = cv2.inRange(hsv, (25, 25, 25), (86, 255,255)) #HSV-Range für grünen Farbton
 
-        ## slice the green
+        ## Pixel in imask-Array abspeichern
         imask = mask>0
-        green = np.zeros_like(img, np.uint8)
-        green[imask] = img[imask]
+        green = np.zeros_like(img, np.uint8) #Parameter: img->Dimensionen des Arrays, np.uint8 -> Typ der Einträge
+        green[imask] = img[imask] #Pixel, die im Farbspektrum liegen, werden als 1 in Array abgespeichert
 
-        ## save 
+        
         #cv2.imwrite("green.png", green)
 
-        numpy_vertical = np.vstack((img, green))
+        numpy_vertical = np.vstack((img, green)) #Grünfilter wird über Kamerabild gelegt
         # ---------------------------------------------------------------------
         # Anzeigen des manipulierten frames
         # ---------------------------------------------------------------------
-        cv2.imshow('Oben Originalbild, Unten grüner Farbkanal', numpy_vertical)
+        cv2.imshow('Oben Originalbild, Unten gruener Farbkanal', numpy_vertical)
         
         # ---------------------------------------------------------------------
         # Prüfen, ob eine Nutzereingabe getätigt wurde um das Programm zu beenden; 27 entspricht der Escape-Taste (siehe ASCII Tabelle: http://www.asciitable.com/)
         # ---------------------------------------------------------------------
-        if cv2.waitKey(1) == 27:
+        if cv2.waitKey(1) == 27: 
             break
 
         
