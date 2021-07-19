@@ -44,8 +44,6 @@ if __name__ == '__main__':
 
     
 
-    
-
     # -------------------------------------------------------------------------
     # Lese die Bilder der Kamera aus, bis die "ESC" Taste betätigt wird (Das Fenster muss hierbei angewählt (im Fokus) sein.)
     # -------------------------------------------------------------------------
@@ -66,8 +64,8 @@ if __name__ == '__main__':
         # ---------------------------------------------------------------------
         # Anzeigen des manipulierten frames
         # ---------------------------------------------------------------------
-        cw.imshow('Aufgabe3', maniFrame, False)
-        PPG.process_frame(  maniFrame)
+        cw.imshow('Aufgabe3', maniFrame, False) 
+        PPG.process_frame(  maniFrame) #Photoplethysmografie-Graph wird ausgegeben
         
         # ---------------------------------------------------------------------
         # Prüfen, ob eine Nutzereingabe getätigt wurde um das Programm zu beenden; 27 entspricht der Escape-Taste (siehe ASCII Tabelle: http://www.asciitable.com/)

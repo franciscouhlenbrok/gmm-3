@@ -51,28 +51,20 @@ if __name__ == '__main__':
         check, frame = cam_stream.read()
 
 
-        #cw.imshow('Unbearbeitet', img)
-
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
         # Verarbeitung des eingelesenen Bildes
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
         
-        thresholds = cw._get_thresholds    
+        thresholds = cw._get_thresholds    #th_ch_1, th_ch_2, th_ch_3 unter thresholds abspeichern
     
-        cw.imshow('Aufgabe2',apply_threshold(frame, thresholds), True)
 
-        # Ausgabe der Tresholds auf dem Display
-        
-
-        
         # ---------------------------------------------------------------------
         # Anzeigen des manipulierten frames
         # ---------------------------------------------------------------------
-        #numpy_vertical = np.vstack((img, faceImg))
-        
-        #cw.imshow('Demo', faceImg)
+        cw.imshow('Aufgabe2',apply_threshold(frame, thresholds), True) #(Überschrift, manipulierter frame, Zahlenwerte von Thesholdfilter grafisch ausgeben lassen?)
+
 
         # ---------------------------------------------------------------------
         # Prüfen, ob eine Nutzereingabe getätigt wurde um das Programm zu beenden; 27 entspricht der Escape-Taste (siehe ASCII Tabelle: http://www.asciitable.com/)
